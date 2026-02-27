@@ -37,35 +37,16 @@ jobs:
             echo "ERROR: ios_project 不存在。请将 iOS 工程拷贝到仓库根目录的 ios_project/ 下，并包含 Podfile 与 YBLiveOne.xcworkspace 或 Xcodeproj。"
             exit 1
           fi
-      - name: Unzip Repo Assets
-        run: |
-          set -e
-          mkdir -p ios_project/VendorFrameworks
-          if [ -f "ios_project/VendorFrameworks/IJKMediaFramework.framework.zip" ]; then
-            unzip -o "ios_project/VendorFrameworks/IJKMediaFramework.framework.zip" -d ios_project/VendorFrameworks || echo "unzip IJK warning tolerated"
-          fi
-          if [ -f "ios_project/VendorFrameworks/TXLiteAVSDK_Professional.framework.zip" ]; then
-            unzip -o "ios_project/VendorFrameworks/TXLiteAVSDK_Professional.framework.zip" -d ios_project/VendorFrameworks || echo "unzip TX warning tolerated"
-          fi
-      # 跳过 pod install，完全使用已提交的本地 Pods 与注入的框架
+      # 跳过 pod install，完全使用已提交的本地 Pods
+      # 依赖已通过 Git LFS 提交，无需再进行 unzip 和注入操作
 
-      - name: Inject Prebuilt Frameworks into Pods
+      - name: Verify LFS Objects
         run: |
           set -e
-          IJK_SRC="ios_project/VendorFrameworks/IJKMediaFramework.framework"
-          TX_SRC="ios_project/VendorFrameworks/TXLiteAVSDK_Professional.framework"
-          if [ -d "$IJK_SRC" ]; then
-            mkdir -p ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes
-            rm -rf ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes/IJKMediaFramework.framework
-            cp -R "$IJK_SRC" ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes/
-          fi
-          if [ -d "$TX_SRC" ]; then
-            mkdir -p ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional
-            rm -rf ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional.framework
-            cp -R "$TX_SRC" ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional/
-          fi
-          ls -al ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes || true
-          ls -al ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional || true
+          echo "Checking IJKMediaFramework..."
+          ls -l ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes/IJKMediaFramework.framework/IJKMediaFramework || echo "IJK binary missing!"
+          echo "Checking TXLiteAVSDK..."
+          ls -l ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional.framework/TXLiteAVSDK_Professional || echo "TX binary missing!"
       - name: Pre-Build Diagnostics
         working-directory: ios_project
         run: |
