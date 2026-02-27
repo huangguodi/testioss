@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-YBLiveOne/Pods-YBLiveOne-resources.sh
+${PODS_ROOT}/AliPay/AlipaySDK.bundle
+${PODS_ROOT}/ZFPlayer/ZFPlayer/Classes/ControlView/ZFPlayer.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/libOpenInstallSDK/OPPrivacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/mob_sharesdk/ShareSDK.bundle
+${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/mob_sharesdk/ShareSDK_JS_QQ.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/mob_sharesdk/ShareSDK_JS_WeChat.bundle

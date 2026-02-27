@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/mob_sharesdk/mob_sharesdk-xcframeworks.sh
+${PODS_ROOT}/mob_sharesdk/ShareSDK/ShareSDK.xcframework
+${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/Required/ShareSDKConnector.xcframework
+${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformConnector/AppleAccountConnector.xcframework
+${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformConnector/QQConnector.xcframework
+${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformConnector/WechatConnector.xcframework

@@ -1,5 +1,5 @@
-ios_project/Pods/
-Pods/
+# ios_project/Pods/
+# Pods/
 *.DS_Store
 .DS_Store
 xcuserdata/

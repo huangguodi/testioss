@@ -1,0 +1,5 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_sharesdk/ShareSDK/ShareSDK.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_sharesdk/ShareSDK/ShareSDKConnector.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_sharesdk/ShareSDKPlatforms/Apple/AppleAccountConnector.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_sharesdk/ShareSDKPlatforms/QQ/QQConnector.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/mob_sharesdk/ShareSDKPlatforms/WeChatFull/WechatConnector.framework
