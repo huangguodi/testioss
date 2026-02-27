@@ -1,0 +1,8 @@
+ios_project/Pods/
+Pods/
+*.DS_Store
+.DS_Store
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/

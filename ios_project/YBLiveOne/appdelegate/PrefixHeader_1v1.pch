@@ -1,0 +1,246 @@
+//
+//  PrefixHeader_1v1.pch
+//  YBLiveOne
+//
+//  Created by IOS1 on 2019/3/29.
+//  Copyright © 2019 IOS1. All rights reserved.
+//
+
+#ifndef PrefixHeader_1v1_pch
+#define PrefixHeader_1v1_pch
+
+#ifdef __OBJC__
+
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+MJ.h"
+#import "AFNetworking.h"
+#import "Masonry.h"
+#import "YBToolClass.h"
+#import <MJRefresh/MJRefresh.h>
+#import "YBBaseViewController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "UIView+ITTAdditions.h"
+#import "UIView+LBExtension.h"
+#import "UIView+AdditionsX12.h"
+#import "UIView+WPFExtension.h"
+#import <ShareSDK/ShareSDK.h>
+#import "Config.h"
+#import "common.h"
+#import "YBWebViewController.h"
+#import "YBAppDelegate.h"
+#import "cityDefault.h"
+#import "TZImagePickerController.h"
+#import "SDWebImageManager.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+#import "THeader.h"
+#import "PublicView.h"
+#import "YBAlertView.h"
+#import "RookieTools.h"
+#import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/SDWebImageDownloader.h>
+#import "YBStorageManage.h"
+#import "YBRechargeType.h"
+#import "YBSearchBarView.h"
+#import "MyTextField.h"
+#import <BraintreePayPal.h>
+#import <BraintreeCore.h>
+#import "YBYoungManager.h"
+#import "RKKeepAlive.h"
+#import "sproutCommon.h"
+#import "YBImManager.h"
+#import "SBJson.h"
+#import "YBLiveHeader.h"
+#import "YBButton.h"
+#import "RKLBSManager.h"
+#import "MyTextView.h"
+#import <JKCategories.h>
+#import "YBShareManager.h"
+#import "YBLiveAlert.h"
+#import "UIImage+RKCircleImg.h"
+#import "YBRoomAlertView.h"
+#import "YBLiveUnitManager.h"
+#import "YBUserRelationManager.h"
+#import <UIScrollView+EmptyDataSet.h>
+#import "UIImage+RKColor.h"
+#import "YBLiteMode.h"
+#import "YBScrollView.h"
+
+#endif
+
+//域名
+
+// 正式站
+#define purl @"http://qw.a5368.com/phalapi/"
+#define h5url @"http://qw.a5368.com/"
+
+// bugly
+#define BuglyId @"6666"
+// 腾讯IM
+#define TXIMSdkAppid          6666
+#define TXIMSdkAccountType    @"6666"
+// 地理位置翻译要用，若无相关开发不需要配置
+#define TencentKey @""
+// 腾讯收费版SDK licence、key
+#define LicencePushURL @"https://license.vod2.myqcloud.com/license/v2/6666/v_cube.license"
+#define LicencePushKey @"6666"
+//
+#define LicenceURL @""
+#define LicenceKey @""
+//Braintree切换返回URL方案  URL Type 每次封新包改一下
+#define BraintreeURL @"com.yunbao.1v1.payments"
+
+#pragma mark - 三方
+// QQ
+#define QQAppId @"6666"
+#define QQAppKey @"6666"
+#define QQLinks @"https://66666.share2dlink.com/qq_conn/101577656"
+// wechat
+#define WechatAppId @"6666"
+#define WechatAppSecret @"66666"
+#define WechatUniversalLink @"https://livenew.yunbaozb.com/"
+#define WechatUsername @"6666"
+
+#pragma mark - 其他
+//协议名称 例如 现在demo中用到的有 (云豹充值协议 云豹平台协议 云豹私聊APP协议)
+#define protocolName @""
+// 短视频录制时长控制
+#define MAX_RECORD_TIME             15
+
+#define YZMsg(key) [[RookieTools shareInstance] getStringForKey:key withTable:@"InfoPlist"]
+#define CurrentLanguage @"will_show_language"
+#define getImagename(a) [NSString stringWithFormat:@"%@%@",a,[Config canshu]]
+#define lagType [[NSUserDefaults standardUserDefaults] objectForKey:@"will_show_language"]
+#define ZH_CN @"zh-Hans"
+#define EN @"en"
+//适配iphoneX
+#define iPhoneX (_window_width== 375.f && _window_height == 812.f)||(_window_width== 414.f && _window_height == 896.f)
+#define ShowDiff (iPhoneX ? 34: 0)
+#define statusbarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height-20)
+#define topStatusBarHeight          (iPhoneX ? 44.0 : 20.0)
+#define naviContentHeight           44.0
+#define naviHight                   (topStatusBarHeight + naviContentHeight)
+
+//获取手机系统版本
+#define SysVersion [[UIDevice currentDevice] systemVersion].floatValue
+
+
+//颜色16进制
+#define RGB_COLOR(_STR_,a) ([UIColor colorWithRed:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(1, 2)] UTF8String], 0, 16)] intValue] / 255.0 green:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(3, 2)] UTF8String], 0, 16)] intValue] / 255.0 blue:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(5, 2)] UTF8String], 0, 16)] intValue] / 255.0 alpha:a])
+
+//字体
+#define SYS_Font(a) [UIFont systemFontOfSize:(a)]
+#define ybNodataFont [UIFont systemFontOfSize:13]
+#define ybNodataCol RGB_COLOR(@"#969696", 1)
+
+//app主色调s
+#define normalColors RGB_COLOR(@"#7014e2",1)
+#define normalLightColors RGB_COLOR(@"#7014e2",0.5)
+#define normalColors_live [UIColor colorWithRed:255/255.0 green:88/255.0 blue:120/255.0 alpha:1]
+
+//各种字体颜色
+#define color32 RGB_COLOR(@"#323232",1)
+#define color66 RGB_COLOR(@"#666666",1)
+#define colorCC RGB_COLOR(@"#cccccc",1)
+#define color96 RGB_COLOR(@"#969696",1)
+#define color99 RGB_COLOR(@"#999999",1)
+#define colorf5 RGB_COLOR(@"#f5f5f5",1)
+
+
+//后来添加
+#define GrayText [UIColor colorWithRed:150/255.f green:150/255.f blue:150/255.f alpha:1.f]
+#define Line_Cor [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1]
+#define Black_Cor RGB_COLOR(@"#f4f5f6",1)
+#define Pink_Cor normalColors
+
+
+// 随机色
+#define YBRandomColor [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1.0]
+
+//系统字体
+#define SYS_Font(a) [UIFont systemFontOfSize:(a)]
+#define fontMT(sizeThin)   [UIFont fontWithName:@"Arial-ItalicMT" size:(sizeThin)]
+#define AtCol RGB_COLOR(@"#f2e50b", 1)
+//@规则
+#define kATRegular @"@[\\u4e00-\\u9fa5\\w\\-\\_]+ "
+//emoji规则
+#define emojiPattern @"\\[\\w+\\]"
+
+//屏幕宽高
+#define  _window_width  [UIScreen mainScreen].bounds.size.width
+#define _window_height [UIScreen mainScreen].bounds.size.height
+
+#define EmojiHeight 200
+
+//各种手机5-6-6P
+#define SCREEN_MAX_LENGTH (MAX(_window_width, _window_height))
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+#define IS_IPHONE_X (IS_IPHONE && SCREEN_MAX_LENGTH > 736.0)
+
+//获取weak对象
+#define WeakSelf __weak typeof(self) weakSelf = self;
+
+//转字符串
+#define  minstr(a) [YBToolClass getStr:a]
+#define YBValue(dic,key) [NSString stringWithFormat:@"%@",[dic valueForKey:key]]
+
+
+#define RECOEDTIME @"60s"
+
+//动态通知用
+#define PAUSEVIODEINDETAIL @"PAUSEVIODEINDETAIL"
+#define RESUMEVIODEINDETAIL @"RESUMEVIODEINDETAIL"
+#define REMOVEALLVIODEORVOICE @"REMOVEALLVIODEORVOICE"
+
+#define ybFollowUser    @"yb_user_follow_event"
+#define ybChatRefresh   @"yb_chat_level_refresh"
+#define ybPersonFollowEvent     @"yb_person_follow_event_noti"
+#define ybReceiveChatGiftEvent  @"yb_im_chat_gift_show"
+
+/// 播放器view的tag，列表中UI控件唯一tag值
+#define kPlayerViewTag 100
+#ifndef weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define zf_weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define zf_weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define zf_weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define zf_weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+#ifndef strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define zf_strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define zf_strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define zf_strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define zf_strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
+//去log
+#if 1
+#define NSLog(FORMAT, ...) fprintf(stderr,"[%s:%d行] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+
+#define NSLog(FORMAT, ...) nil
+
+#endif
+
+#endif /* PrefixHeader_1v1_pch */

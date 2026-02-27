@@ -1,0 +1,60 @@
+//
+//  TFaceCell.m
+//  UIKit
+//
+//  Created by kennethmiao on 2018/9/29.
+//  Copyright © 2018年 kennethmiao. All rights reserved.
+//
+
+#import "TFaceCell.h"
+#import "TUIKit.h"
+
+@implementation TFaceCellData
+@end
+
+@implementation TFaceCell
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if(self){
+        [self setupViews];
+        [self defaultLayout];
+    }
+    return self;
+}
+
+- (void)setupViews
+{
+    _face = [[UIImageView alloc] init];
+    _face.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:_face];
+}
+
+- (void)defaultLayout
+{
+    CGSize size = self.frame.size;
+    _face.frame = CGRectMake(0, 0, size.width, size.height);
+}
+
+- (void)setData:(TFaceCellData *)data
+{
+//    _face.image = [[[TUIKit sharedInstance] getConfig] getFaceFromCache:data.path];
+    NSString *imageName = data.name;
+    if ([lagType isEqual:EN]) {
+        if ([imageName isEqual:@"[互粉]"] ||
+            [imageName isEqual:@"[关注]"] ||
+            [imageName isEqual:@"[粉]"] ||
+            [imageName isEqual:@"[给力]"]) {
+            imageName = [imageName stringByAppendingFormat:@"_en"];
+            _face.image = [UIImage imageNamed:imageName];
+        }else{
+            _face.image = [[[TUIKit sharedInstance] getConfig] getFaceFromCache:data.path];
+        }
+    }else{
+        _face.image = [[[TUIKit sharedInstance] getConfig] getFaceFromCache:data.path];
+    }
+    [self defaultLayout];
+}
+
+
+@end
