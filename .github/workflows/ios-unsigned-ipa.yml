@@ -40,10 +40,15 @@ jobs:
       # 跳过 pod install，完全使用已提交的本地 Pods
       # 依赖已通过 Git LFS 提交，无需再进行 unzip 和注入操作
 
-      - name: Verify LFS Objects
+      - name: Verify LFS Objects and Debug
         run: |
-          set -e
-          echo "Checking IJKMediaFramework..."
+          echo "Listing Pods directory to debug missing files..."
+          ls -R ios_project/Pods || echo "Pods directory not found"
+          
+          echo "Explicitly pulling LFS objects..."
+          git lfs pull
+          
+          echo "Verifying IJKMediaFramework..."
           ls -l ios_project/Pods/IJKMediaFramework/IJKMediaFramework/Classes/IJKMediaFramework.framework/IJKMediaFramework || echo "IJK binary missing!"
           echo "Checking TXLiteAVSDK..."
           ls -l ios_project/Pods/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional.framework/TXLiteAVSDK_Professional || echo "TX binary missing!"
